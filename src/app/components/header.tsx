@@ -1,20 +1,25 @@
-import { connect } from "react-redux";
-import React, { Component } from "react";
+import React from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 type Props = {};
 
-type State = {};
-
-export class header extends Component<Props, State> {
-  state = {};
-
-  render() {
-    return <div>header</div>;
-  }
+export default function Header({}: Props) {
+  return (
+    <Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand href="#home">Employees Dashboard</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/#">Home</Nav.Link>
+            <Nav.Link href="/#/login">Login</Nav.Link>
+            <Nav.Link href="/#/employees">Employees</Nav.Link>
+            <Nav.Link href="/#/upload">Upload</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
-
-const mapStateToProps = () => ({});
-
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(header);

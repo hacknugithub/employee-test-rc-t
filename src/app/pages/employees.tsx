@@ -1,13 +1,32 @@
-import React, { Component } from "react";
+import { useEffect, useState } from "react";
+import { fetchEmployees } from "../../features/employees/employeesApi";
+import EmployeeTable from "../components/EmployeeTable";
 
 type Props = {};
 
-type State = {};
+type EmployeeType = {
+  id: string;
+  name: string;
+  last_name: string;
+  birthday: Date;
+};
 
-export default class Employees extends Component<Props, State> {
-  state = {};
+export default function Employees({}: Props) {
+  const [employees, setEmployees] = useState<Array<EmployeeType>>([]);
+  useEffect(() => {
+    return () => {
+      fetchEmployees().then((result) => {
+        console.log(result);
+        setEmployees(result);
+      });
+    };
+  }, []);
 
-  render() {
-    return <div>Employees</div>;
-  }
+  return (
+    <div className="container-fluid d-flex">
+      <div className="col-lg-12">
+        <EmployeeTable data={employees} />
+      </div>
+    </div>
+  );
 }

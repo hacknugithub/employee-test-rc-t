@@ -7,6 +7,7 @@ import Employees from "../pages/employees";
 import ProtectedRoute from "../components/ProtectedRoute";
 
 import Upload from "../pages/upload";
+import Header from "../components/header";
 
 type Props = {};
 
@@ -16,19 +17,22 @@ export default class App extends Component<Props, State> {
   state = {};
   render() {
     return (
-      <HashRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/employees" element={<ProtectedRoute />}>
-            <Route path="/employees" element={<Employees />} />
-          </Route>
-          <Route path="/upload" element={<ProtectedRoute />}>
-            <Route path="/upload" element={<Upload />} />
-          </Route>
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </HashRouter>
+      <>
+        <HashRouter>
+        <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/employees" element={<ProtectedRoute />}>
+              <Route path="/employees" element={<Employees />} />
+            </Route>
+            <Route path="/upload" element={<ProtectedRoute />}>
+              <Route path="/upload" element={<Upload />} />
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </HashRouter>
+      </>
     );
   }
 }
