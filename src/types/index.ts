@@ -20,3 +20,14 @@ export type StoreState = {
   employees: Array<EmployeeType>;
   auth: AuthState;
 };
+
+export type Image = {
+  image: {
+    src: any;
+    id: string;
+  };
+};
+
+export type Images = {
+  images: Image[];
+};
