@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState, AppThunk } from "../../app/store";
-
-export interface AuthState {
-  value: string;
-  status: "notAuthenticated" | "authenticated";
-}
+import { AuthState } from "../../types";
 
 const initialState: AuthState = {
   value: "",
@@ -57,7 +53,7 @@ export const { login, isAuthenticated } = authSlice.actions;
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const selectAuth = (state: RootState) => state.auth.value;
+export const selectAuth = (state: RootState) => state.rootReducer.auth.value;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

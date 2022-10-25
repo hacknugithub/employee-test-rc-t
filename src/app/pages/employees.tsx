@@ -1,15 +1,9 @@
 import { useEffect, useState } from "react";
 import { fetchEmployees } from "../../features/employees/employeesApi";
 import EmployeeTable from "../components/EmployeeTable";
+import { EmployeeType } from "../../types";
 
 type Props = {};
-
-type EmployeeType = {
-  id: string;
-  name: string;
-  last_name: string;
-  birthday: Date;
-};
 
 export default function Employees({}: Props) {
   const [employees, setEmployees] = useState<Array<EmployeeType>>([]);

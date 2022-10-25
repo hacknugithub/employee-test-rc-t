@@ -12,15 +12,10 @@ import {
   flexRender,
 } from "@tanstack/react-table";
 
-export type Employee = {
-  id: string;
-  name: string;
-  last_name: string;
-  birthday: Date;
-};
+import { EmployeeType } from "../../types";
 
 type Props = {
-  data: Employee[];
+  data: EmployeeType[];
 };
 
 function Filter({
@@ -78,8 +73,8 @@ function Table({
   data,
   columns,
 }: {
-  data: Employee[];
-  columns: ColumnDef<Employee>[];
+  data: EmployeeType[];
+  columns: ColumnDef<EmployeeType>[];
 }) {
   const table = useReactTable({
     data,
@@ -222,7 +217,7 @@ function Pagination({ table }: { table: ReactTable<any> }) {
 }
 
 export default function EmployeeTable({ data }: Props) {
-  const columns = useMemo<ColumnDef<Employee>[]>(
+  const columns = useMemo<ColumnDef<EmployeeType>[]>(
     () => [
       {
         accessorKey: "id",

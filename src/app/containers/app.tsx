@@ -8,6 +8,7 @@ import ProtectedRoute from "../components/ProtectedRoute";
 
 import Upload from "../pages/upload";
 import Header from "../components/header";
+import EmployeeForm from "../components/EmployeeForm";
 
 type Props = {};
 
@@ -19,11 +20,14 @@ export default class App extends Component<Props, State> {
     return (
       <>
         <HashRouter>
-        <Header />
+          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/employees" element={<ProtectedRoute />}>
               <Route path="/employees" element={<Employees />} />
+            </Route>
+            <Route path="/employees/new" element={<ProtectedRoute />}>
+              <Route path="/employees/new" element={<EmployeeForm />} />
             </Route>
             <Route path="/upload" element={<ProtectedRoute />}>
               <Route path="/upload" element={<Upload />} />
