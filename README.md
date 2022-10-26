@@ -2,9 +2,26 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
 
-Be sure to add your keys to your .env file
+Be sure to add your keys to your .env file.
+Use the REACT_APP pefix to be able to use it in the whole proyect
 
 ### `REACT_APP_API_URL = "https://6edeayi7ch.execute-api.us-east-1.amazonaws.com/v1/examen"`
+
+### `REACT_APP_API_URL = "https://6edeayi7ch.execute-api.us-east-1.amazonaws.com/v1/examen"`
+
+Include AWS S3 credentials to be able to upload files
+
+### `REACT_APP_BUCKET_NAME = your-aws-bucket-details`
+
+### `REACT_APP_DIRECTORY_NAME = your-aws-bucket-details`
+
+### `REACT_APP_REGION = your-aws-bucket-details`
+
+### `REACT_APP_ACCESS_KEY_ID = your-aws-bucket-details`
+
+### `REACT_APP_SECRET_ACCESS_KEY = your-aws-bucket-details`
+
+### `REACT_APP_S3_URL = your-aws-bucket-details`
 
 ## Available Scripts
 

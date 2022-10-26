@@ -17,6 +17,7 @@ export default function Header({}: Props) {
             <Nav.Link href="/#/login">Login</Nav.Link>
             <Nav.Link href="/#/employees">Employees</Nav.Link>
             <Nav.Link href="/#/upload">Upload</Nav.Link>
+            <Nav.Link href="/#/upload/images">Images</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
