@@ -1,5 +1,6 @@
 import ReactS3Client from "react-aws-s3-typescript";
 import { s3Config } from "../../s3Config";
+import { s3File } from "../../types";
 
 export const uploadFile = async (file: File) => {
   const s3 = new ReactS3Client(s3Config);
@@ -17,12 +18,19 @@ export const uploadFile = async (file: File) => {
 };
 
 export const fetchFiles = async () => {
-    const s3 = new ReactS3Client(s3Config);
-    try {
-        const fileList = await s3.listFiles();
-        console.log(fileList);
-        return fileList;
-    } catch (error) {
-        console.log(error)
-    }
-}
+  const s3 = new ReactS3Client(s3Config);
+  try {
+    const fileList = await s3.listFiles();
+    console.log(fileList.data.Contents);
+    return parseFilesFromS3(fileList.data.Contents as s3File[]);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const parseFilesFromS3 = (files: s3File[]) => {
+  const result = files.filter((file) => {
+    return file.Size > 0;
+  });
+  return result;
+};

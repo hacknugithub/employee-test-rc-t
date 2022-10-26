@@ -35,6 +35,8 @@ export default function Upload({}: Props) {
       uploadFile(file);
     });
     console.log(updatedFiles);
+    setFiles([]);
+    setImages([]);
   };
 
   console.log(images.length);

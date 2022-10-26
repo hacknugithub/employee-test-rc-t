@@ -31,3 +31,17 @@ export type Image = {
 export type Images = {
   images: Image[];
 };
+
+export type s3File = {
+  LastModified: Date;
+  Key: string;
+  ETag: string;
+  ChecksumAlgorithm: Array<any>;
+  Size: number;
+  StorageClass: string;
+  Owner: {
+    DisplayName: string;
+    ID: string;
+  };
+  publicUrl: string;
+};

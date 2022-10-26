@@ -9,6 +9,7 @@ import ProtectedRoute from "../components/ProtectedRoute";
 import Upload from "../pages/upload";
 import Header from "../components/header";
 import EmployeeForm from "../components/EmployeeForm";
+import Images from "../pages/images";
 
 type Props = {};
 
@@ -31,6 +32,9 @@ export default class App extends Component<Props, State> {
             </Route>
             <Route path="/upload" element={<ProtectedRoute />}>
               <Route path="/upload" element={<Upload />} />
+            </Route>
+            <Route path="/upload/images" element={<ProtectedRoute />}>
+              <Route path="/upload/images" element={<Images />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<ErrorPage />} />
