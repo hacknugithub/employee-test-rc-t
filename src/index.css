@@ -42,3 +42,19 @@ li.file-list-item {
   background-color: blue;
   color: aliceblue;
 }
+
+.file-list {
+  /* border: 3px dotted black; */
+  display: flex !important;
+  flex-wrap: wrap;
+  width: auto;
+  padding: 10px 20px;
+  margin: 20px 30px;
+  /* border: 3px dotted black; */
+}
+.file-list img {
+  height: 100%;
+  width: 100px;
+  padding-right: 10px;
+  object-fit: cover;
+}
