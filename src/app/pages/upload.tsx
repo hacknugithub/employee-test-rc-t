@@ -1,16 +1,21 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import Dropzone from "../components/Dropzone";
 import { Button } from "react-bootstrap";
 import cuid from "cuid";
 import ImageGride from "../components/ImageGride";
 import { Image } from "../../types";
 import { uploadFile } from "../../features/s3/s3Api";
+import { useNavigate } from "react-router-dom";
+import { createVoidZero } from "typescript";
+import { UploadResponse } from "react-aws-s3-typescript/dist/types";
 
 type Props = {};
 
 export default function Upload({}: Props) {
   const [images, setImages] = useState<Array<Image>>([]);
   const [files, setFiles] = useState<Array<File>>([]);
+  const navigate = useNavigate();
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
     acceptedFiles.map((file: Blob) => {
       const reader = new FileReader();
@@ -29,17 +34,20 @@ export default function Upload({}: Props) {
     "image/*": [],
   };
 
-  const handleUpdateFiles = (files: File[]): void => {
+  const clearAndRedirect = (): void => {
+    setFiles([]);
+    setImages([]);
+    navigate("/upload/images");
+  };
+
+  const handleUpdateFiles = () => {
     console.log(files);
     const updatedFiles = files.map((file) => {
       uploadFile(file);
     });
     console.log(updatedFiles);
-    setFiles([]);
-    setImages([]);
+    clearAndRedirect();
   };
-
-  console.log(images.length);
 
   return (
     <div className="container text-center">
@@ -53,7 +61,7 @@ export default function Upload({}: Props) {
       />
       <ImageGride images={images} />
       {images.length > 0 ? (
-        <Button onClick={() => handleUpdateFiles(files)}>Upload Files</Button>
+        <Button onClick={handleUpdateFiles}>Upload Files</Button>
       ) : (
         ""
       )}
